@@ -70,6 +70,9 @@ public class BruteForceUsersResource {
             @QueryParam("email") String email,
             @QueryParam("username") String username,
             @QueryParam("emailVerified") Boolean emailVerified,
+            @QueryParam("phoneNumberLocale") String phoneNumberLocale,
+            @QueryParam("phoneNumber") String phoneNumber,
+            @QueryParam("phoneNumberVerified") Boolean phoneNumberVerified,
             @QueryParam("idpAlias") String idpAlias,
             @QueryParam("idpUserId") String idpUserId,
             @QueryParam("first") @DefaultValue("-1") Integer firstResult,
@@ -102,8 +105,8 @@ public class BruteForceUsersResource {
                 return searchForUser(attributes, realm, userPermissionEvaluator, briefRepresentation, firstResult,
                         maxResults, false);
             }
-        } else if (last != null || first != null || email != null || username != null || emailVerified != null
-                || idpAlias != null || idpUserId != null || enabled != null || exact != null || !searchAttributes.isEmpty()) {
+        } else if (last != null || first != null || email != null || username != null || emailVerified != null || phoneNumberVerified != null 
+                || idpAlias != null || idpUserId != null || enabled != null || phoneNumberLocale != null || phoneNumber != null || exact != null || !searchAttributes.isEmpty()) {
             Map<String, String> attributes = new HashMap<>();
             if (last != null) {
                 attributes.put(UserModel.LAST_NAME, last);
@@ -114,11 +117,20 @@ public class BruteForceUsersResource {
             if (email != null) {
                 attributes.put(UserModel.EMAIL, email);
             }
+            if (phoneNumberLocale != null) {
+                attributes.put(UserModel.PHONE_NUMBER_LOCALE, phoneNumberLocale);
+            }
+            if (phoneNumber != null) {
+                attributes.put(UserModel.PHONE_NUMBER, phoneNumber);
+            }
             if (username != null) {
                 attributes.put(UserModel.USERNAME, username);
             }
             if (emailVerified != null) {
                 attributes.put(UserModel.EMAIL_VERIFIED, emailVerified.toString());
+            }
+            if (phoneNumberVerified != null) {
+                attributes.put(UserModel.PHONE_NUMBER_VERIFIED, phoneNumberVerified.toString());
             }
             if (idpAlias != null) {
                 attributes.put(UserModel.IDP_ALIAS, idpAlias);

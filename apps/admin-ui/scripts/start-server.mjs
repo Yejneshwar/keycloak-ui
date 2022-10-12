@@ -10,6 +10,7 @@ import { pipeline } from "node:stream/promises";
 import { fileURLToPath } from "node:url";
 import tar from "tar-fs";
 
+console.info("Starting script…");
 const DIR_NAME = path.dirname(fileURLToPath(import.meta.url));
 const SERVER_DIR = path.resolve(DIR_NAME, "../server");
 const SCRIPT_EXTENSION = process.platform === "win32" ? ".bat" : ".sh";
@@ -22,6 +23,7 @@ async function startServer() {
   console.info("Starting server…");
 
   const args = process.argv.slice(2);
+  console.info("Spawn");
   const child = spawn(
     path.join(SERVER_DIR, `bin/kc${SCRIPT_EXTENSION}`),
     [
@@ -66,10 +68,11 @@ async function getNightlyAsset() {
     repo: "keycloak",
     tag: "nightly",
   });
-
-  return release.data.assets.find(
+  var result = release.data.assets.find(
     ({ name }) => name === "keycloak-999-SNAPSHOT.tar.gz"
   );
+  console.log(result);
+  return result;
 }
 
 async function getAssetAsStream(asset) {

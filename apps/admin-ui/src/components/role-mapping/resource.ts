@@ -63,6 +63,9 @@ type UserQuery = BaseQuery & {
   email?: string;
   username?: string;
   emailVerified?: boolean;
+  phoneNumberLocale?: string;
+  phoneNumber?: string;
+  phoneNumberVerified?: boolean;
   idpAlias?: string;
   idpUserId?: string;
   enabled?: boolean;

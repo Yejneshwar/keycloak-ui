@@ -45,7 +45,7 @@ export const UserProfileProvider: FunctionComponent = ({ children }) => {
 
   const save: SaveCallback = async (updatedConfig, options) => {
     setIsSaving(true);
-
+    console.warn(updatedConfig);
     try {
       await adminClient.users.updateProfile({
         ...updatedConfig,

@@ -404,6 +404,16 @@ export default function UsersSection() {
                   cellFormatters: [emptyFormatter()],
                 },
                 {
+                  name: "phoneNumberLocale",
+                  displayKey: "users:phoneNumberLocale",
+                  cellFormatters: [emptyFormatter()],
+                },
+                {
+                  name: "phoneNumber",
+                  displayKey: "users:phoneNumber",
+                  cellFormatters: [emptyFormatter()],
+                },
+                {
                   name: "status",
                   displayKey: "users:status",
                   cellRenderer: StatusRow,

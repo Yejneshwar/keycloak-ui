@@ -10,7 +10,7 @@ export async function fetchAdminUI<T>(
 ): Promise<T> {
   const accessToken = await adminClient.getAccessToken();
   const baseUrl = adminClient.baseUrl;
-
+  console.warn(baseUrl, "admin/realms", adminClient.realmName, endpoint);
   const response = await fetch(
     joinPath(baseUrl, "admin/realms", adminClient.realmName, endpoint) +
       (query ? "?" + new URLSearchParams(query) : ""),

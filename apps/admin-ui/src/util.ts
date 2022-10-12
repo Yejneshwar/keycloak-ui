@@ -159,6 +159,8 @@ export const alphaRegexPattern = /[^A-Za-z]/g;
 export const emailRegexPattern =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+export const phoneNumberLocaleRegexPattern = /^([A-Z]{2})$/;
+
 export const KEY_PROVIDER_TYPE = "org.keycloak.keys.KeyProvider";
 
 export const prettyPrintJSON = (value: any) => JSON.stringify(value, null, 2);

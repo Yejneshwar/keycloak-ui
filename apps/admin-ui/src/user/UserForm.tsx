@@ -24,6 +24,7 @@ import type GroupRepresentation from "@keycloak/keycloak-admin-client/lib/defs/g
 import { useAlerts } from "../components/alert/Alerts";
 import { KeycloakTextInput } from "../components/keycloak-text-input/KeycloakTextInput";
 import { emailRegexPattern } from "../util";
+import { phoneNumberLocaleRegexPattern } from "../util";
 import useFormatDate from "../utils/useFormatDate";
 import { GroupPickerDialog } from "../components/group/GroupPickerDialog";
 import type RealmRepresentation from "@keycloak/keycloak-admin-client/lib/defs/realmRepresentation";
@@ -254,6 +255,67 @@ export const UserForm = ({
               label={t("common:on")}
               labelOff={t("common:off")}
               aria-label={t("emailVerified")}
+            />
+          )}
+        />
+      </FormGroup>
+      <FormGroup
+        label={t("phoneNumberLocale")}
+        fieldId="kc-description"
+        validated={errors.phoneNumberLocale ? "error" : "default"}
+        helperTextInvalid={t("users:phoneNumberLocaleInvalid")}
+      >
+        <KeycloakTextInput
+          ref={register({
+            pattern: phoneNumberLocaleRegexPattern,
+          })}
+          type="text"
+          id="kc-phoneNumberLocale"
+          name="phoneNumberLocale"
+          data-testid="phone-number-locale-input"
+          aria-label={t("phoneNumberLocaleInput")}
+        />
+      </FormGroup>
+      <FormGroup
+        label={t("phoneNumber")}
+        fieldId="kc-phoneNumber"
+        validated={errors.phoneNumber ? "error" : "default"}
+        helperTextInvalid={t("common:required")}
+      >
+        <KeycloakTextInput
+          ref={register()}
+          data-testid="phoneNumber-input"
+          type="text"
+          id="kc-phoneNumber"
+          aria-label={t("phoneNumber")}
+          name="phoneNumber"
+        />
+      </FormGroup>
+      <FormGroup
+        label={t("phoneNumberVerified")}
+        fieldId="kc-phone-number-verified"
+        helperTextInvalid={t("common:required")}
+        labelIcon={
+          <HelpItem
+            helpText="users-help:phoneNumberVerified"
+            fieldLabelId="users:phoneNumberVerified"
+          />
+        }
+      >
+        <Controller
+          name="phoneNumberVerified"
+          defaultValue={false}
+          control={control}
+          render={({ onChange, value }) => (
+            <Switch
+              data-testid="phone-number-verified-switch"
+              id={"kc-user-phone-number-verified"}
+              isDisabled={false}
+              onChange={(value) => onChange(value)}
+              isChecked={value}
+              label={t("common:on")}
+              labelOff={t("common:off")}
+              aria-label={t("phoneNumberVerified")}
             />
           )}
         />

@@ -201,7 +201,7 @@ export default function NewAttributeSettings() {
       ] as UserProfileAttribute);
 
     const updatedAttributes = editMode ? patchAttributes() : addAttribute();
-
+    console.warn(updatedAttributes);
     try {
       await adminClient.users.updateProfile({
         ...config,

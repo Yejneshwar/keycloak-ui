@@ -62,6 +62,8 @@
   "users": "Users",
   "userName": "Username",
   "email": "Email",
+  "phoneNumberLocale": "Phone Number Locale",
+  "phoneNumber": "Phone Number",
   "lastName": "Last name",
   "firstName": "First name",
   "clearAllFilters": "Clear all filters",

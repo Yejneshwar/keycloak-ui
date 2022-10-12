@@ -18,6 +18,9 @@ public class BruteUser extends UserRepresentation {
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.email = user.getEmail();
+        this.phoneNumberLocale = user.getPhoneNumberLocale();
+        this.phoneNumber = user.getPhoneNumber();
+        this.phoneNumberVerified = user.isPhoneNumberVerified();
         this.federationLink = user.getFederationLink();
         this.serviceAccountClientId = user.getServiceAccountClientId();
 

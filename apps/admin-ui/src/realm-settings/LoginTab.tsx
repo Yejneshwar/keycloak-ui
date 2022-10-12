@@ -250,6 +250,38 @@ export const RealmSettingsLoginTab = ({
         </FormAccess>
       </FormPanel>
       <FormPanel
+        className="kc-phone-number-settings"
+        title={t("phoneNumberSettings")}
+      >
+        <FormAccess isHorizontal role="manage-realm">
+          <FormGroup
+            label={t("verifyPhoneNumber")}
+            fieldId="kc-verify-phone-number"
+            labelIcon={
+              <HelpItem
+                helpText="realm-settings:verifyPhoneNumberHelpText"
+                fieldLabelId="realm-settings:verifyPhoneNumber"
+              />
+            }
+            hasNoPaddingTop
+          >
+            <Switch
+              id="kc-verify-phone-number-switch"
+              data-testid="verify-phone-number-switch"
+              name="verifyPhoneNumber"
+              value={realm.verifyPhoneNumber ? "on" : "off"}
+              label={t("common:on")}
+              labelOff={t("common:off")}
+              isChecked={realm.verifyPhoneNumber}
+              onChange={(value) => {
+                updateSwitchValue({ verifyPhoneNumber: value });
+              }}
+              aria-label={t("verifyPhoneNumber")}
+            />
+          </FormGroup>
+        </FormAccess>
+      </FormPanel>
+      <FormPanel
         className="kc-user-info-settings"
         title={t("userInfoSettings")}
       >
